@@ -1,0 +1,9 @@
+﻿  Management.cpp
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(100,58): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(287,55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(545,2): warning C4102: “defult”: 未引用的标签
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(644,2): warning C4102: “defult”: 未引用的标签
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(677,3): warning C4102: “defult”: 未引用的标签
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(718,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(804,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+  Vip_Management.vcxproj -> E:\桌面\Yy_Hair2\Vip_Management\x64\Debug\Vip_Management.exe
