@@ -11,7 +11,6 @@ public:
     Vip_Discount();
     ~Vip_Discount();
    
-   
 private:
     std::string v_name;
     std::string v_phone;

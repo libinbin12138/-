@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClInclude Include="Management.h" />
     <ClInclude Include="Vip.h" />
+    <ClInclude Include="Vip_Count.h" />
     <ClInclude Include="Vip_Discount.h" />
     <ClInclude Include="Vip_Number.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Management.cpp" />
+    <ClCompile Include="Vip_Count.cpp" />
     <ClCompile Include="Vip_Discount.cpp" />
     <ClCompile Include="Vip_Number.cpp" />
   </ItemGroup>

@@ -1,16 +1,22 @@
 #pragma once
 #include<list>
 #include<string>
+#include <windows.h> 
+
 class Vip;
 class Vip_Discount;
 class Vip_Number;
+class Vip_Count;
 
 class Management
 {
 	int Vip_num;
+	SYSTEMTIME Vip_Time;
 	std::list<Vip*>L_saved;
-	std::list<Vip_Discount*>L_DTemp;//用于打印时的区分
+	std::list<Vip_Discount*>L_DTemp;//用于查找、打印等时的区分
 	std::list<Vip_Number*>L_NTemp;
+
+	std::list<Vip_Count*>L_Consume_Temp;
 public:
 	Management();
 	~Management();
@@ -38,5 +44,25 @@ public:
 	void Consume_NUM_Name(std::string choice);
 	void Consume_DPhone(std::string choice);
 	void Consume_NUM_Phone(std::string choice);
+
+	void ModifyMember();
+	void ModifyMember_Name();
+	void ModifyMember_DName(std::string choice);
+	void ModifyMember_NUM_Name(std::string choice);
+	void ModifyMember_Phone();
+	void ModifyMember_DPhone(std::string choice);
+	void ModifyMember_NUM_Phone(std::string choice);
+
+	void ReadMember_Consume_Info();
+	void ShowMember_Consume_Info();
+
+	void AddMember_Consume(int flag, Vip* p, float money);
+	void SaveMember_Consume(Vip_Count* p);
+
+	void Show_SpecificMember_Consume_Info();
+
+	void Show_SpecificDate_Year_Consume_Info();
+	void Show_SpecificDate_Year_Month_Consume_Info();
+	void Show_SpecificDate_Year_Month_Day_Consume_Info();
 };
 

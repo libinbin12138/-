@@ -1,9 +1,19 @@
 ﻿  Management.cpp
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(100,58): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(287,55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(545,2): warning C4102: “defult”: 未引用的标签
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(644,2): warning C4102: “defult”: 未引用的标签
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(677,3): warning C4102: “defult”: 未引用的标签
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(718,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(804,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(111,58): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(298,55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(728,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(819,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(979,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(980,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(990,29): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1039,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1040,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1124,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1125,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1135,29): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1184,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1185,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1427,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1472,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1522,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
   Vip_Management.vcxproj -> E:\桌面\Yy_Hair2\Vip_Management\x64\Debug\Vip_Management.exe
