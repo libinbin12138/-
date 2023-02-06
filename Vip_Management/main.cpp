@@ -43,7 +43,7 @@ int main()
 		cin >> choice;
 		switch (atoi(choice.c_str()))//string ×ª»»Îªint
 		{
-		case 0:
+		case 100:
 			manage.ExitSys();
 			break;
 		case 1:
@@ -78,6 +78,9 @@ int main()
 			break;
 		case 11:
 			manage.Show_SpecificDate_Year_Month_Day_Consume_Info();
+			break;
+		case 12:
+			manage.Record_Member_Find();
 			break;
 		default:system("cls");
 			break;

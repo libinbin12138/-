@@ -1,28 +1,30 @@
 ﻿  main.cpp
   Management.cpp
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(111,58): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(298,55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(728,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(819,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(979,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(980,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(990,29): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1039,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1040,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1124,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1125,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1135,29): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1184,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1185,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1427,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1475,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1528,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
-E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1562,7): warning C4101: “buf”: 未引用的局部变量
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(112,58): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(115,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(139,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(299,55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(729,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(820,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(980,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(981,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(991,29): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1040,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1041,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1125,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1126,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1136,29): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1185,21): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1186,15): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1436,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1484,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1537,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1572,7): warning C4101: “buf”: 未引用的局部变量
   Vip_Count.cpp
   Vip_Discount.cpp
   Vip_Number.cpp
   正在生成代码
   Previous IPDB not found, fall back to full compilation.
-  All 568 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 572 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
   Vip_Management.vcxproj -> E:\桌面\Yy_Hair2\Vip_Management\x64\Release\Vip_Management.exe

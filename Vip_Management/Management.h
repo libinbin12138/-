@@ -22,7 +22,6 @@ private:
 };
 class Management
 {
-	
 	int Vip_num;
 	SYSTEMTIME Vip_Time;
 	Manager manager;
@@ -30,10 +29,15 @@ class Management
 	std::list<Vip_Discount*>L_DTemp;//用于查找、打印等时的区分
 	std::list<Vip_Number*>L_NTemp;
 
-	std::list<Vip_Count*>L_Consume_Temp;
+	std::list<Vip_Count*>L_Consume_Temp;//统计消费
 
 	std::list<Manager>L_manager;
 public:
+	enum FindType
+	{
+		ConsumeFile = 1,
+		RecordFile = 2
+	};
 	Management();
 	~Management();
 	int InitMember();
@@ -69,14 +73,11 @@ public:
 	void ModifyMember_DPhone(std::string choice);
 	void ModifyMember_NUM_Phone(std::string choice);
 
-	void ReadMember_Consume_Info();
+	void ReadMember_Consume_Info(FindType type);
 	void ShowMember_Consume_Info();
-
 	void AddMember_Consume(int flag, Vip* p, float money);
 	void SaveMember_Consume(Vip_Count* p);
-
 	void Show_SpecificMember_Consume_Info();
-
 	void Show_SpecificDate_Year_Consume_Info();
 	void Show_SpecificDate_Year_Month_Consume_Info();
 	void Show_SpecificDate_Year_Month_Day_Consume_Info();
@@ -84,5 +85,10 @@ public:
 	int ReadLoginFile();
 	int Login();
 	void CreateManeger();
+
+	void Record_Member_Add(int flag, Vip* p, float money);
+	void Record_Member_Save(Vip_Count* p);
+
+	void Record_Member_Find();
 };
 

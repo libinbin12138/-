@@ -58,7 +58,7 @@ void Management::ClaerList()
 void Management::ShowMenu()
 {
 	cout << "****************************************" << endl;
-	cout << "***0.退出当前管理系统*******************" << endl;
+	cout << "***100.退出当前管理系统*******************" << endl;
 	cout << "***1.新增会员***************************" << endl;
 	cout << "***2.显示当前已录入会员信息*************" << endl;
 	cout << "***3.删除相关会员信息*******************" << endl;
@@ -68,8 +68,9 @@ void Management::ShowMenu()
 	cout << "***7.显示当前所有消费记录***************" << endl;
 	cout << "***8.查找某会员的消费记录***************" << endl;
 	cout << "***9.查找整年的消费记录*****************" << endl;
-	cout << "***10.查找某年某月的消费记录*****************" << endl;
-	cout << "***11.查找某年某月某日的消费记录*****************" << endl;
+	cout << "***10.查找某年某月的消费记录************" << endl;
+	cout << "***11.查找某年某月某日的消费记录********" << endl;
+	cout << "***12.查找某会员的充值记录**************" << endl;
 	cout << "****************************************" << endl;
 	cout << "当前会员人数为: "<<this->Vip_num << endl;
 }
@@ -81,7 +82,7 @@ void Management::ExitSys()
 
 void Management::AddMember()
 {
-	string choice;
+	string choice; string choice_money;
 	cout << "请为该新增会员选择" << endl;
 	cout << "1.按折扣消费" << endl;
 	cout << "2.按次数消费" << endl;
@@ -103,14 +104,15 @@ void Management::AddMember()
 		dynamic_cast<Vip_Discount*>(Vip_Member)->v_phone = choice;
 
 		cout << "请输入新增会员的充值金额" << endl;
-		cin >> choice;
-		dynamic_cast<Vip_Discount*>(Vip_Member)->v_money = choice;
+		cin >> choice_money;
+		dynamic_cast<Vip_Discount*>(Vip_Member)->v_money = choice_money;
 
 		cout << "请输入新增会员的折扣" << endl;
 		cin >> choice;
 		dynamic_cast<Vip_Discount*>(Vip_Member)->discount= atoi(choice.c_str());
 
 		SaveMember(1,Vip_Member);
+		Record_Member_Add(1, Vip_Member, atoi(choice_money.c_str()));
 		break;
 
 	case 2:
@@ -126,22 +128,21 @@ void Management::AddMember()
 		dynamic_cast<Vip_Number*>(Vip_Member)->v_phone = choice;
 
 		cout << "请输入新增会员的充值金额" << endl;
-		cin >> choice;
-		dynamic_cast<Vip_Number*>(Vip_Member)->v_money = choice;
+		cin >> choice_money;
+		dynamic_cast<Vip_Number*>(Vip_Member)->v_money = choice_money;
 
 		cout << "请输入新增会员的剩余理发次数" << endl;
 		cin >> choice;
 		dynamic_cast<Vip_Number*>(Vip_Member)->v_num = atoi(choice.c_str());
 
 		SaveMember(2, Vip_Member);
+		Record_Member_Add(2, Vip_Member, atoi(choice_money.c_str()));
 		break;
 	default:
 		system("cls");
 		cout << "输入有误，已返回" << endl;
 		return;
 	}
-
-	
 	
 }
 
@@ -1210,10 +1211,20 @@ void Management::ModifyMember_NUM_Phone(std::string choice)
 	}
 }
 
-void Management::ReadMember_Consume_Info()
+void Management::ReadMember_Consume_Info(FindType type)
 {
 	ifstream ifs;
-	ifs.open("./Member_Consume.txt", ios::in);
+	string ReadType;
+	switch (type)
+	{
+	case 1:
+		ReadType = "./Member_Consume.txt";
+		break;
+	case 2:
+		ReadType = "./Member_Add_Record.txt";
+		break;
+	}
+	ifs.open(ReadType, ios::in);
 	if (!ifs.is_open())
 	{
 		cout << "当前会员录入文件不存在,请确认！！！" << endl;
@@ -1254,7 +1265,7 @@ void Management::ReadMember_Consume_Info()
 
 void Management::ShowMember_Consume_Info()
 {
-	ReadMember_Consume_Info();
+	ReadMember_Consume_Info(FindType::ConsumeFile);
 	if (L_Consume_Temp.size() == 0)
 	{
 		cout << "当前会员记录为空" << endl;
@@ -1337,8 +1348,6 @@ void Management::AddMember_Consume(int flag, Vip* p,float money)
 		break;
 	}
 
-	
-	
 }
 
 void Management::SaveMember_Consume(Vip_Count* p)
@@ -1370,7 +1379,7 @@ void Management::Show_SpecificMember_Consume_Info()
 	string choice;
 	cout << "请输入要查找的会员的姓名或手机号码" << endl;
 	cin >> choice;
-	this->ReadMember_Consume_Info();
+	this->ReadMember_Consume_Info(FindType::ConsumeFile);
 
 	for (auto single : L_Consume_Temp)
 	{
@@ -1407,7 +1416,7 @@ void Management::Show_SpecificDate_Year_Consume_Info()
 	cout << "请输入要查找的年份" << endl;
 	cin >> date;
 	int Year_num = atoi(date.c_str()),num=0,income=0,use_num=0;
-	this->ReadMember_Consume_Info();
+	this->ReadMember_Consume_Info(FindType::ConsumeFile);
 	for (auto single : L_Consume_Temp)
 	{
 		if (single->ConsumTime.wYear== Year_num)
@@ -1455,7 +1464,7 @@ void Management::Show_SpecificDate_Year_Month_Consume_Info()
 	cin >> date;
 	int Month_num = atoi(date.c_str());
 
-	this->ReadMember_Consume_Info();
+	this->ReadMember_Consume_Info(FindType::ConsumeFile);
 	for (auto single : L_Consume_Temp)
 	{
 		if (single->ConsumTime.wYear == Year_num&&single->ConsumTime.wMonth==Month_num)
@@ -1508,7 +1517,7 @@ void Management::Show_SpecificDate_Year_Month_Day_Consume_Info()
 	cin >> date;
 	int Day_num = atoi(date.c_str());
 
-	this->ReadMember_Consume_Info();
+	this->ReadMember_Consume_Info(FindType::ConsumeFile);
 	for (auto single : L_Consume_Temp)
 	{
 		if (single->ConsumTime.wYear == Year_num && single->ConsumTime.wMonth == Month_num&&single->ConsumTime.wDay== Day_num)
@@ -1553,6 +1562,7 @@ int Management::ReadLoginFile()
 {
 	int num = 0;
 	ifstream ifs;
+
 	ifs.open("login.txt", ios::in);
 	if (!ifs.is_open())
 	{
@@ -1634,6 +1644,113 @@ void Management::CreateManeger()
 	system("pause");
 	system("cls");
 	L_manager.clear();
+}
+
+void Management::Record_Member_Add(int flag, Vip* p, float money)
+{
+	Vip_Discount* vip_Dtemp;
+	Vip_Number* vip_Ntemp;
+	Vip_Count* vip_count_temp;
+
+	switch (flag)
+	{
+	case 1:
+		vip_Dtemp = dynamic_cast<Vip_Discount*> (p);
+		vip_count_temp = new Vip_Count;
+		vip_count_temp->v_name = vip_Dtemp->v_name;
+		vip_count_temp->v_phone = vip_Dtemp->v_phone;
+		vip_count_temp->v_Remain_money = money;
+		vip_count_temp->ConsumTime.wYear = Vip_Time.wYear;
+		vip_count_temp->ConsumTime.wMonth = Vip_Time.wMonth;
+		vip_count_temp->ConsumTime.wDay = Vip_Time.wDay;
+		Record_Member_Save(vip_count_temp);
+		if (vip_count_temp != NULL)
+		{
+			delete vip_count_temp;
+			vip_count_temp = NULL;
+		}
+		if (vip_Dtemp != NULL)
+		{
+			delete vip_Dtemp;
+			vip_Dtemp = NULL;
+		}
+		break;
+	case 2:
+		vip_Ntemp = dynamic_cast<Vip_Number*> (p);
+		vip_count_temp = new Vip_Count;
+		vip_count_temp->v_name = vip_Ntemp->v_name;
+		vip_count_temp->v_phone = vip_Ntemp->v_phone;
+		vip_count_temp->v_Sum_Num = 1;
+		vip_count_temp->ConsumTime.wYear = Vip_Time.wYear;
+		vip_count_temp->ConsumTime.wMonth = Vip_Time.wMonth;
+		vip_count_temp->ConsumTime.wDay = Vip_Time.wDay;
+		Record_Member_Save(vip_count_temp);
+		if (vip_count_temp != NULL)
+		{
+			delete vip_count_temp;
+			vip_count_temp = NULL;
+		}
+		if (vip_Ntemp != NULL)
+		{
+			delete vip_Ntemp;
+			vip_Ntemp = NULL;
+		}
+		break;
+	}
+}
+
+void Management::Record_Member_Save(Vip_Count* p)
+{
+	ofstream ofs;
+	ofs.open("./Member_Add_Record.txt", ios::out | ios::app);
+	if (!ofs.is_open())
+	{
+		cout << "文件打开或创建失败,请联系管理员检查" << endl;
+		return;
+	}
+
+	ofs << p->v_name << " "
+		<< p->v_phone << " "
+		<< p->v_Remain_money << " "
+		<< p->v_Sum_Num << " "
+		<< p->ConsumTime.wYear << " "
+		<< p->ConsumTime.wMonth << " "
+		<< p->ConsumTime.wDay << " "
+		<< endl;
+	ofs.flush();
+	ofs.close();
+
+}
+
+void Management::Record_Member_Find()
+{
+	ReadMember_Consume_Info(FindType::RecordFile);
+	string choice; int num = 0;
+	cout << "请输入要查找的会员的姓名或手机号码" << endl;
+	cin >> choice;
+	for (auto single : L_Consume_Temp)
+	{
+		if (choice == single->v_name || choice == single->v_phone || ((single->v_phone).find(choice)) < (single->v_phone.size()))
+		{
+			if (num == 0)
+			{
+				cout << "当前会员充值记录如下" << endl;
+				cout << "姓名\t" << "手机号码\t" << "充值金额\t" << "理发次数\t" << "时间\t" << endl;
+			}
+
+			cout << single->v_name << "\t" << single->v_phone << "\t"
+				<< single->v_Remain_money << "\t" << "\t" << single->v_Sum_Num << "\t" << "\t"
+				<< single->ConsumTime.wYear << "."
+				<< single->ConsumTime.wMonth << "."
+				<< single->ConsumTime.wDay << "\t" << endl;
+			num++;
+		}
+		
+	}
+	cout << "查找完毕" << endl;
+	L_Consume_Temp.clear();
+	system("pause");
+	system("cls");
 }
 
 Manager::Manager()
