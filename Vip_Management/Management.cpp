@@ -1531,7 +1531,7 @@ void Management::Show_SpecificDate_Year_Month_Day_Consume_Info()
 		}
 		if (single == L_Consume_Temp.back() && num == 0)
 		{
-			cout << "该年该月份暂无记录" << endl;
+			cout << "该年该月该日份暂无记录" << endl;
 			break;
 		}
 	}
@@ -1549,4 +1549,104 @@ void Management::Show_SpecificDate_Year_Month_Day_Consume_Info()
 	system("cls");
 }
 
+int Management::ReadLoginFile()
+{
+	int num = 0;
+	ifstream ifs;
+	ifs.open("login.txt", ios::in);
+	if (!ifs.is_open())
+	{
+		cout << "读取登陆文件失败" << endl;
+		return num;
+	}
+	char buf[1024];
+	char username[128], password[128];
+	while (!ifs.eof())
+	{
+		ifs >> username >> password;
+		manager.SetUser(username, password);
+		L_manager.push_back(manager);
+		num++;
+	}
+	ifs.close();
+	return num;
+}
+
+int Management::Login()
+{
+	cout << "欢迎登录尚雅美学理发管理系统" << endl;
+	int num = ReadLoginFile();
+	if (num == 0)
+	{
+		cout << "当前暂无管理者用户，请创建" << endl;
+		CreateManeger();
+	}
+
+	ReadLoginFile();
+	string choice1, choice2;
+	cout << "请输入管理者用户名" << endl;
+	cin >> choice1;
+
+	cout << "请输入用户的密码" << endl;
+	cin >> choice2;
+
+	manager.SetUser(choice1, choice2);
+
+	int flag = -1;
+	for (auto single : L_manager)
+	{
+		if (single.Username == choice1 && single.PassWord == choice2)
+		{
+			flag = 1;
+			cout << "登录成功"<<endl;
+			system("pause");
+			system("cls");
+			break;
+		}
+		
+	}
+	return flag;
+}
+
+void Management::CreateManeger()
+{
+	string choice1, choice2;
+	cout << "请输入新用户的用户名" << endl;
+	cin >> choice1;
+
+	cout << "请输入新用户的密码" << endl;
+	cin >> choice2;
+	manager.SetUser(choice1, choice2);
+	L_manager.push_back(manager);
+
+	ofstream ofs;
+
+	ReadLoginFile();
+	
+	ofs.open("login.txt", ios::out | ios::_Noreplace);
+
+	for (auto single : L_manager)
+	{
+		ofs << single.Username <<" " << single.PassWord << endl;
+	}
+	ofs.close();
+	cout << "创建成功" << endl;
+	system("pause");
+	system("cls");
+	L_manager.clear();
+}
+
+Manager::Manager()
+{
+}
+
+Manager::~Manager()
+{
+}
+
+void Manager::SetUser(string name, string password)
+{
+	Username = name;
+	PassWord = password;
+}
 

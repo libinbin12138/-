@@ -8,15 +8,31 @@ class Vip_Discount;
 class Vip_Number;
 class Vip_Count;
 
+class Manager
+{
+public:
+	friend class Management;
+	Manager();
+	~Manager();
+	void SetUser(std::string name,std::string password);
+
+private:
+	std::string Username;
+	std::string PassWord;
+};
 class Management
 {
+	
 	int Vip_num;
 	SYSTEMTIME Vip_Time;
+	Manager manager;
 	std::list<Vip*>L_saved;
 	std::list<Vip_Discount*>L_DTemp;//用于查找、打印等时的区分
 	std::list<Vip_Number*>L_NTemp;
 
 	std::list<Vip_Count*>L_Consume_Temp;
+
+	std::list<Manager>L_manager;
 public:
 	Management();
 	~Management();
@@ -64,5 +80,9 @@ public:
 	void Show_SpecificDate_Year_Consume_Info();
 	void Show_SpecificDate_Year_Month_Consume_Info();
 	void Show_SpecificDate_Year_Month_Day_Consume_Info();
+
+	int ReadLoginFile();
+	int Login();
+	void CreateManeger();
 };
 

@@ -2,7 +2,9 @@
 using namespace std;
 #include"Management.h"
 #include <windows.h> 
-void testTime()
+#include<fstream>
+
+void TestTime()
 {
 	SYSTEMTIME start; //windows.h中  
 
@@ -15,11 +17,26 @@ void testTime()
 	cout << start.wMinute << endl;
 	cout << start.wSecond << endl;
 }
+
 int main()
 {
 	Management manage;
 	string choice = { "0" };
-	while (true)
+	while (1)
+	{
+		int num=manage.Login();
+		if (num == 1)
+		{
+			break;
+		}
+		else
+		{
+			cout << "用户名或者密码有误，请重试" << endl;
+			system("pause");
+			system("cls");
+		}
+	}
+	while (1)
 	{
 		manage.ShowMenu();
 		cout << "请输入你的选择" << endl;

@@ -1,4 +1,5 @@
-﻿  Management.cpp
+﻿  main.cpp
+  Management.cpp
 E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(111,58): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
 E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(298,55): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
 E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(728,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
@@ -16,9 +17,12 @@ E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1185,15): warning C4244: “=�
 E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1427,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
 E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1475,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
 E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1528,20): warning C4244: “+=”: 从“float”转换到“int”，可能丢失数据
+E:\桌面\Yy_Hair2\Vip_Management\Management.cpp(1562,7): warning C4101: “buf”: 未引用的局部变量
+  Vip_Count.cpp
+  Vip_Discount.cpp
+  Vip_Number.cpp
   正在生成代码
-  4 of 505 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB not found, fall back to full compilation.
+  All 568 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
   Vip_Management.vcxproj -> E:\桌面\Yy_Hair2\Vip_Management\x64\Release\Vip_Management.exe
