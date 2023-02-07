@@ -82,6 +82,18 @@ int main()
 		case 12:
 			manage.Record_Member_Find();
 			break;
+		case 13:
+			manage.TempCustom_Consume();
+			break;
+		case 14:
+			manage.TempCustom_Consume_Find(manage.FindYear);
+			break;
+		case 15:
+			manage.TempCustom_Consume_Find(manage.FindMonth);
+			break;
+		case 16:
+			manage.TempCustom_Consume_Find(manage.FindDay);
+			break;
 		default:system("cls");
 			break;
 		}

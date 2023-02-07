@@ -7,6 +7,7 @@ class Vip;
 class Vip_Discount;
 class Vip_Number;
 class Vip_Count;
+class Vip_TempCustom;
 
 class Manager
 {
@@ -29,14 +30,22 @@ class Management
 	std::list<Vip_Discount*>L_DTemp;//用于查找、打印等时的区分
 	std::list<Vip_Number*>L_NTemp;
 
-	std::list<Vip_Count*>L_Consume_Temp;//统计消费
+	std::list<Vip_Count*>L_Consume_Temp;//统计会员消费
 
 	std::list<Manager>L_manager;
+
+	std::list<Vip_TempCustom*>L_Temp_Consume_Temp;
 public:
 	enum FindType
 	{
 		ConsumeFile = 1,
 		RecordFile = 2
+	};
+	enum FindDate
+	{
+		FindYear = 1,
+		FindMonth=2,
+		FindDay=3
 	};
 	Management();
 	~Management();
@@ -90,5 +99,11 @@ public:
 	void Record_Member_Save(Vip_Count* p);
 
 	void Record_Member_Find();
+
+	void TempCustom_Consume();
+	void TempCustom_Consume_Read();
+	void TempCustom_Consume_Find(FindDate find_date);
+
+
 };
 

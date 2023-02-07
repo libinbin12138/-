@@ -132,6 +132,7 @@
     <ClInclude Include="Vip_Count.h" />
     <ClInclude Include="Vip_Discount.h" />
     <ClInclude Include="Vip_Number.h" />
+    <ClInclude Include="Vip_TempCustom.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -139,6 +140,7 @@
     <ClCompile Include="Vip_Count.cpp" />
     <ClCompile Include="Vip_Discount.cpp" />
     <ClCompile Include="Vip_Number.cpp" />
+    <ClCompile Include="Vip_TempCustom.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

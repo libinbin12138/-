@@ -12,6 +12,7 @@ using namespace std;
 #include"Vip_Discount.h"
 #include"Vip_Number.h"
 #include"Vip_Count.h"
+#include"Vip_TempCustom.h"
 
 Management::Management() :Vip_num (0)
 {
@@ -58,19 +59,26 @@ void Management::ClaerList()
 void Management::ShowMenu()
 {
 	cout << "****************************************" << endl;
-	cout << "***100.退出当前管理系统*******************" << endl;
+	cout << "***100.退出当前管理系统*****************" << endl;
+	cout << endl;
 	cout << "***1.新增会员***************************" << endl;
 	cout << "***2.显示当前已录入会员信息*************" << endl;
 	cout << "***3.删除相关会员信息*******************" << endl;
 	cout << "***4.会员消费***************************" << endl;
 	cout << "***5.查找会员信息***********************" << endl;
 	cout << "***6.修改会员信息***********************" << endl;
+	cout << endl;
 	cout << "***7.显示当前所有消费记录***************" << endl;
 	cout << "***8.查找某会员的消费记录***************" << endl;
 	cout << "***9.查找整年的消费记录*****************" << endl;
 	cout << "***10.查找某年某月的消费记录************" << endl;
 	cout << "***11.查找某年某月某日的消费记录********" << endl;
 	cout << "***12.查找某会员的充值记录**************" << endl;
+	cout << endl;
+	cout << "***13.添加散客消费记录******************" << endl;
+	cout << "***14.查找某年散客的消费记录************" << endl;
+	cout << "***15.查找某月散客的消费记录************" << endl;
+	cout << "***16.查找某天散客的消费记录************" << endl;
 	cout << "****************************************" << endl;
 	cout << "当前会员人数为: "<<this->Vip_num << endl;
 }
@@ -1753,6 +1761,164 @@ void Management::Record_Member_Find()
 	system("cls");
 }
 
+void Management::TempCustom_Consume()
+{
+	string choice;
+	cout << "请输入当前散客的消费金额" << endl;
+	cin >> choice;
+	Vip_TempCustom* v_temp = new Vip_TempCustom;
+	v_temp->v_Remain_money = atoi(choice.c_str());
+	v_temp->ConsumTime.wYear = Vip_Time.wYear;
+	v_temp->ConsumTime.wMonth = Vip_Time.wMonth;
+	v_temp->ConsumTime.wDay = Vip_Time.wDay;
+	cout << "当前散客消费金额为  ：" << v_temp->v_Remain_money << ",输入y确定该结果" << endl;
+	cin >> choice;
+	if (choice[choice.size()-1]=='y'|| choice[choice.size() - 1] == 'Y')
+	{
+		ofstream ofs;
+		ofs.open("./TempCustom_Consume.txt", ios::out | ios::app);
+		ofs << v_temp->v_Remain_money << " "
+			<< v_temp->ConsumTime.wYear << " "
+			<< v_temp->ConsumTime.wMonth << " "
+			<< v_temp->ConsumTime.wDay << " "
+			<< endl;
+		ofs.close();
+		cout << "消费完成" << endl;
+		system("pause");
+		system("cls");
+	}
+	else
+	{
+		cout << "取消" << endl;
+		system("pause");
+		system("cls");
+	}
+
+}
+
+void Management::TempCustom_Consume_Read()
+{
+	ifstream ifs;
+	
+	ifs.open("./TempCustom_Consume.txt", ios::in);
+	if (!ifs.is_open())
+	{
+		cout << "当前会员录入文件不存在,请确认！！！" << endl;
+		system("pause");
+	}
+
+	char infor_buf[4096];
+	memset(infor_buf, 0, sizeof(infor_buf));
+
+	while (ifs.getline(infor_buf, sizeof(infor_buf)))
+	{
+		if (strlen(infor_buf) == 0)
+			break;
+		
+		float money = -1;
+		int  year = -1, month = -1, day = -1;
+
+		sscanf(infor_buf, "%f %d %d %d",  &money, &year, &month, &day);
+
+		Vip_TempCustom* vip_consume = new Vip_TempCustom;
+
+		vip_consume->v_Remain_money = money;
+		vip_consume->ConsumTime.wYear = year;
+		vip_consume->ConsumTime.wMonth = month;
+		vip_consume->ConsumTime.wDay = day;
+
+		L_Temp_Consume_Temp.push_back(vip_consume);
+	}
+	ifs.close();
+}
+
+void Management::TempCustom_Consume_Find(FindDate find_date)
+{
+	TempCustom_Consume_Read();
+	string choice1,choice2,choice3;
+
+	float income=0;
+	switch (find_date)
+	{
+	case 1:
+		cout << "请输入你要查找的年份" << endl;
+		cin >> choice1;
+		for (auto single : L_Temp_Consume_Temp)
+		{
+			if (atoi(choice1.c_str()) == single->ConsumTime.wYear)
+			{
+				income += single->v_Remain_money;
+			}
+		}
+		if (income != 0)
+		{
+			cout << atoi(choice1.c_str()) << "年，通过散客消费收入" << income << endl;
+
+		}
+		else
+		{
+			cout << atoi(choice1.c_str()) << "年，暂无散客消费收入记录" << endl;
+		}
+		system("pause");
+		system("cls");
+		break;
+	case 2:
+		cout << "请输入你要查找的年份" << endl;
+		cin >> choice1;
+		cout << "请输入你要查找的月份" << endl;
+		cin >> choice2;
+		for (auto single : L_Temp_Consume_Temp)
+		{
+			if (atoi(choice1.c_str()) == single->ConsumTime.wYear&& atoi(choice2.c_str()) == single->ConsumTime.wMonth)
+			{
+				income += single->v_Remain_money;
+			}
+		}
+		if (income != 0)
+		{
+			cout << atoi(choice1.c_str())<< "年"<<atoi(choice2.c_str())<<"月，通过散客消费收入" << income << endl;
+
+		}
+		else
+		{
+			cout << atoi(choice1.c_str()) << "年" << atoi(choice2.c_str()) << "月，暂无散客消费收入记录" << endl;
+		}
+		system("pause");
+		system("cls");
+		break;
+	case 3:
+		cout << "请输入你要查找的年份" << endl;
+		cin >> choice1;
+		cout << "请输入你要查找的月份" << endl;
+		cin >> choice2;
+		cout << "请输入你要查找的日子" << endl;
+		cin >> choice3;
+
+		for (auto single : L_Temp_Consume_Temp)
+		{
+			if (atoi(choice1.c_str()) == single->ConsumTime.wYear && atoi(choice2.c_str()) == single->ConsumTime.wMonth&& atoi(choice3.c_str()) == single->ConsumTime.wDay)
+			{
+				income += single->v_Remain_money;
+			}
+		}
+		if (income != 0)
+		{
+			cout << atoi(choice1.c_str()) << "年" << atoi(choice2.c_str()) << "月"<< atoi(choice3.c_str()) <<"日，通过散客消费收入" << income << endl;
+
+		}
+		else
+		{
+			cout << atoi(choice1.c_str()) << "年" << atoi(choice2.c_str()) << "月"<< atoi(choice3.c_str()) <<"日，暂无散客消费收入记录" << endl;
+		}
+		system("pause");
+		system("cls");
+		break;
+	}
+
+	L_Temp_Consume_Temp.clear();
+}
+
+
 Manager::Manager()
 {
 }
@@ -1766,4 +1932,5 @@ void Manager::SetUser(string name, string password)
 	Username = name;
 	PassWord = password;
 }
+
 
